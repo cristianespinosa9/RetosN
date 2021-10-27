@@ -10,6 +10,6 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author USUARIO
  */
-public interface InterfaceGames extends CrudRepository<Games,Integer> {
+public interface InterfaceGame extends CrudRepository<Game,Integer> {
     
 }

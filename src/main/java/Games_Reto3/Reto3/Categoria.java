@@ -25,7 +25,7 @@ public class Categoria implements Serializable {
     
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="category")
     @JsonIgnoreProperties("category")
-    private List<Games> games;
+    private List<Game> game;
 
     public Integer getId() {
         return id;
@@ -51,12 +51,12 @@ public class Categoria implements Serializable {
         this.description = description;
     }
 
-    public List<Games> getGames() {
-        return games;
+    public List<Game> getGame() {
+        return game;
     }
 
-    public void setGames(List<Games> games) {
-        this.games = games;
+    public void setGame(List<Game> game) {
+        this.game = game;
     }
     
     

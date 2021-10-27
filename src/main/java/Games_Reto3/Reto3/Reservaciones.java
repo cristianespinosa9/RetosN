@@ -33,7 +33,7 @@ public class Reservaciones implements Serializable  {
     @ManyToOne
     @JoinColumn(name = "id")
     @JsonIgnoreProperties("reservations")
-    private Games games;
+    private Game game;
 
     @ManyToOne
     @JoinColumn(name = "idClient")
@@ -74,12 +74,12 @@ public class Reservaciones implements Serializable  {
         this.status = status;
     }
 
-    public Games getGames() {
-        return games;
+    public Game getGame() {
+        return game;
     }
 
-    public void setGames(Games games) {
-        this.games = games;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public Cliente getClient() {

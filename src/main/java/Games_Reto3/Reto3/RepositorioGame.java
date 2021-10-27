@@ -14,24 +14,24 @@ import org.springframework.stereotype.Repository;
  * @author USUARIO
  */
 @Repository
-public class RepositorioGames {
+public class RepositorioGame {
     
     @Autowired
-    private InterfaceGames crud;
+    private InterfaceGame crud;
 
-    public List<Games> getAll(){
-        return (List<Games>) crud.findAll();
+    public List<Game> getAll(){
+        return (List<Game>) crud.findAll();
     }
 
-    public Optional<Games> getGames(int id){
+    public Optional<Game> getGame(int id){
         return crud.findById(id);
     }
 
-    public Games save(Games games){
-        return crud.save(games);
+    public Game save(Game game){
+        return crud.save(game);
     }
-    public void delete(Games games){
-        crud.delete(games);
+    public void delete(Game game){
+        crud.delete(game);
     }
     
 }
