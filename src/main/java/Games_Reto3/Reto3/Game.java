@@ -31,11 +31,11 @@ public class Game implements Serializable{
     
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("game")
+    @JsonIgnoreProperties("games")
     private Categoria category;
 
-     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
-    @JsonIgnoreProperties({"game", "client"})
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
+    @JsonIgnoreProperties({"client"})
     private List<Mensaje> messages;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
