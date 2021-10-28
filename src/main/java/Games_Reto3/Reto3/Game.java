@@ -24,9 +24,9 @@ public class Game implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
     private String developer;
     private Integer year;
-    private String name;
     private String description;
     
     @ManyToOne
