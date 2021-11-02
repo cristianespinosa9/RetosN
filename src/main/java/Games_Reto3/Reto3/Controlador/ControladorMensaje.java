@@ -1,9 +1,12 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Games_Reto3.Reto3;
+package Games_Reto3.Reto3.Controlador;
 
+import Games_Reto3.Reto3.Modelos.Mensaje;
+import Games_Reto3.Reto3.Servicios.ServiciosMensaje;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,37 +28,37 @@ import org.springframework.web.bind.annotation.RestController;
  * @author USUARIO
  */
 @RestController
-@RequestMapping("/api/Client")
+@RequestMapping("/api/Message")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
-public class ControladorCliente {
+public class ControladorMensaje {
      @Autowired
-    private ServiciosCliente servicio;
-  
+    private ServiciosMensaje servico;
     @GetMapping("/all")
-    public List<Cliente> getClients(){
-        return servicio.getAll();
+    public List<Mensaje> getMessages(){
+        return servico.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Cliente> getClient(@PathVariable("id") int clientId) {
-        return servicio.getClient(clientId);
+    public Optional<Mensaje> getMessage(@PathVariable("id") int messageId) {
+        return servico.getMessage(messageId);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente save(@RequestBody Cliente client) {
-        return servicio.save(client);
+    public Mensaje save(@RequestBody Mensaje message) {
+        return servico.save(message);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente update(@RequestBody Cliente client) {
-        return servicio.update(client);
+    public Mensaje update(@RequestBody Mensaje message) {
+        return servico.update(message);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int clientId) {
-        return servicio.deleteClient(clientId);
+    public boolean delete(@PathVariable("id") int messageId) {
+        return servico.deleteMessage(messageId);
     }
+    
 }

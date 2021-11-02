@@ -2,8 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Games_Reto3.Reto3;
-
+package Games_Reto3.Reto3.Modelos;
+/*
+* @autor: Cristian Espinosa
+*
+*/
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.List;
@@ -20,28 +23,29 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "game")
 public class Game implements Serializable{
-    
+    //Creacion de la clase Game
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //Variables de la Clase
     private Integer id;
     private String name;
     private String developer;
     private Integer year;
     private String description;
-    
+    //Relaciones con la Tabla Category
     @ManyToOne
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("games")
     private Categoria category;
-
+    //Relaciones con la Tabla Messages
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
     @JsonIgnoreProperties({"game","client"})
     private List<Mensaje> messages;
-
+    //Relaciones con la Tabla Reservations
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
     @JsonIgnoreProperties({"game", "message"})
     private List<Reservaciones> reservations;
-
+    //Getters y Setters
     public Integer getId() {
         return id;
     }
