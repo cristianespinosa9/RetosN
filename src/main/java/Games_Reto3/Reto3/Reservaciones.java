@@ -82,6 +82,8 @@ public class Reservaciones implements Serializable  {
         this.game = game;
     }
 
+   
+
     public Cliente getClient() {
         return client;
     }
