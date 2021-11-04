@@ -6,10 +6,18 @@ package Games_Reto3.Reto3.Servicios;
 
 import Games_Reto3.Reto3.Repositorio.RepositorioReservaciones;
 import Games_Reto3.Reto3.Modelos.Reservaciones;
+import Games_Reto3.Reto3.Modelos.StatusReservas;
+import Games_Reto3.Reto3.Modelos.contadorClientes;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  *
@@ -72,4 +80,34 @@ public class ServiciosReservaciones {
         }).orElse(false);
         return aBoolean;
     }
+    
+    public StatusReservas reporteStatusServicio (){
+        List<Reservaciones>completed= metodosCrud.ReservacionStatusRepositorio("completed");
+        List<Reservaciones>cancelled= metodosCrud.ReservacionStatusRepositorio("cancelled");
+        
+        return new StatusReservas(completed.size(), cancelled.size() );
+    }
+    public List<Reservaciones> reporteTiempoServicio (String datoA, String datoB){
+        SimpleDateFormat parser = new SimpleDateFormat ("yyyy-MM-dd");
+        
+        Date datoUno = new Date();
+        Date datoDos = new Date();
+        
+        try{
+             datoUno = parser.parse(datoA);
+             datoDos = parser.parse(datoB);
+        }catch(ParseException evt){
+            evt.printStackTrace();
+        }if(datoUno.before(datoDos)){
+            return metodosCrud.ReservacionTiempoRepositorio(datoUno, datoDos);
+        }else{
+            return new ArrayList<>();
+        
+        } 
+    }
+    public List<contadorClientes> reporteClientesServicio(){
+            return metodosCrud.getClientesRepositorio();
+        }
+
+
 }

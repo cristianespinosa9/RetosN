@@ -5,6 +5,8 @@
 package Games_Reto3.Reto3.Controlador;
 
 import Games_Reto3.Reto3.Modelos.Reservaciones;
+import Games_Reto3.Reto3.Modelos.StatusReservas;
+import Games_Reto3.Reto3.Modelos.contadorClientes;
 import Games_Reto3.Reto3.Servicios.ServiciosReservaciones;
 import java.util.List;
 import java.util.Optional;
@@ -57,4 +59,21 @@ public class ControladorReservaciones {
     public boolean delete(@PathVariable("id") int reservationId) {
         return servicio.deleteReservation(reservationId);
     }
+    
+    @GetMapping("/report-status")
+    public StatusReservas getReservas(){
+        return servicio.reporteStatusServicio();
+    }
+    
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+     public List<Reservaciones> getReservasTiempo (@PathVariable("dateOne")String dateOne, @PathVariable("dateTwo")String dateTwo ){
+         return servicio.reporteTiempoServicio(dateOne, dateTwo);
+     }
+     
+     @GetMapping("/report-clients")
+     public List<contadorClientes> getClientes(){
+         return servicio.reporteClientesServicio();
+     }
 }
+
+
