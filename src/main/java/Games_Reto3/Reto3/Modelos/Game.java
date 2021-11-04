@@ -46,12 +46,21 @@ public class Game implements Serializable{
     @JsonIgnoreProperties({"game", "message"})
     private List<Reservaciones> reservations;
     //Getters y Setters
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDeveloper() {
@@ -68,14 +77,6 @@ public class Game implements Serializable{
 
     public void setYear(Integer year) {
         this.year = year;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {
@@ -109,7 +110,7 @@ public class Game implements Serializable{
     public void setReservations(List<Reservaciones> reservations) {
         this.reservations = reservations;
     }
-
+    
 
     
     

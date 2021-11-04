@@ -54,9 +54,7 @@ public class ServiciosGame {
                 if(game.getYear()!=null){
                     e.get().setYear(game.getYear());
                 }
-                if(game.getName()!=null){
-                    e.get().setName(game.getDescription());
-                }
+               
                 if(game.getDescription()!=null){
                     e.get().setDescription(game.getDescription());
                 }
